@@ -1,0 +1,42 @@
+type Bundle @entity(immutable: true) {
+  id: ID!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  tobOrderCount: BigInt!
+  userOrderCount: BigInt!
+}
+
+type TopOfBlockOrder @entity(immutable: true) {
+  id: ID!
+  bundle: Bundle!
+  orderIndex: BigInt!
+  pairIndex: BigInt!
+  zeroForOne: Boolean!
+  assetIn: Bytes!
+  assetOut: Bytes!
+  pairAsset0: Bytes!
+  pairAsset1: Bytes!
+  quantityIn: BigInt!
+  quantityOut: BigInt!
+  maxGasAsset0: BigInt!
+  gasUsedAsset0: BigInt!
+  tobOnlyLpPaymentAsset0: BigInt
+  attributionStatus: String!
+}
+
+type PoolUpdate @entity(immutable: true) {
+  id: ID!
+  bundle: Bundle!
+  updateIndex: BigInt!
+  pairIndex: BigInt!
+  zeroForOne: Boolean!
+  rewardAmount: BigInt!
+}
+
+type UserOrder @entity(immutable: true) {
+  id: ID!
+  bundle: Bundle!
+  orderIndex: BigInt!
+  pairIndex: BigInt!
+}
